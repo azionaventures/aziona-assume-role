@@ -1,0 +1,17 @@
+version: "1"
+
+options:
+  interpolation: true
+  session_clean_before: False
+  session_clean_after: False
+
+targets:
+  assume-role-iam:
+    stages:
+      assume-role-iam:
+        module: aziona.packages.aws.iam.assume_role
+        args: 
+          --role-arn: ${AWS_ROLE_ARN}
+          --role-session-name: assume-role-iam
+          --role-session-duration: 1200
+          --session-save: assume-role-iam
